@@ -1,0 +1,81 @@
+﻿@model List<ProjeRentACar.Models.Arac>
+@{
+    ViewBag.Title = "Arac";
+    Layout = "~/Views/Shared/adminPanel.cshtml";
+}
+<hr />
+@Html.Action("aracEkle", "Arac")
+<p style="color:red">@ViewBag.uyarTXT</p>
+<hr />
+<table id="kullaniciTBL" class="table table-responsive">
+    <thead>
+        <tr>
+            <td>
+                <div class="col-md-2">Marka</div>
+            </td>
+            <td>
+                <div class="col-md-2">Plaka</div>
+            </td>
+            <td>
+                <div class="col-md-1">Yıl</div>
+            </td>
+            <td>
+                <div class="col-md-1">Yakıt</div>
+            </td>
+            <td>
+                <div class="col-md-2">Vites</div>
+            </td>
+            <td>
+                <div class="col-md-2">Durum</div>
+            </td>
+            <td>
+                <div class="col-md-2">Foto</div>
+            </td>
+            <td>
+                <div class="col-md-1">Değiştir</div>
+            </td>
+            <td>
+                <div class="col-md-1">Sil</div>
+            </td>
+
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr id="satir_@item.id">
+            <td>
+                <input id="marka_@item.id" type="text" value="@item.Marka" class="form-control" />
+            </td>
+            <td>
+                <input id="plaka_@item.id" type="text" value="@item.Plaka" class="form-control" />
+            </td>
+            <td>
+                <input id="yil_@item.id" type="text" value="@item.Yıl" class="form-control" />
+            </td>
+
+            <td>
+                @Html.DropDownList("yakit_" + item.id, new SelectList(ViewBag.yakit, "Value", "Text"), item.Yakıt_tipi, new { @class = "form-control" })
+            </td>
+            <td>
+                @Html.DropDownList("vites_" + item.id, new SelectList(ViewBag.vites, "Value", "Text"), item.Vites, new { @class = "form-control" })
+            </td>
+
+            <td>
+                @Html.DropDownList("durumlar_" + item.id, new SelectList(ViewBag.durumlar, "Value", "Text"), item.Durum, new { @class = "form-control" })
+            </td>
+            <td>
+                <img id="logo_@item.id" src="@item.img.Replace("~","")" width="60px" />
+                <input type="file" id="foto_@item.id" onchange="fotoDegistir(@item.id)" />
+            </td>
+            <td>
+                <button type="button" class="btn btn-warning" onclick="guncelle(@item.id)">Değiştir</button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-danger" onclick="kullaniciSil(@item.id)">Sil</button>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,73 @@
+﻿@model List<ProjeRentACar.Models.Musteri>
+@{
+    ViewBag.Title = "Musteri";
+    Layout = "~/Views/Shared/adminPanel.cshtml";
+}
+<hr />
+
+@Html.Action("musteriEkle", "Musteri")
+<p style="color:red">@ViewBag.uyarTXT</p>
+<hr />
+<table id="kullaniciTBL" class="table table-responsive">
+    <thead>
+        <tr>
+            <td>
+                <div class="col-md-1">Ad Soyad</div>
+            </td>
+            <td>
+                <div class="col-md-3">Email</div>
+            </td>
+            <td>
+                <div class="col-md-1">Doğum Yılı</div>
+            </td>
+            <td>
+                <div class="col-md-1">Telefon</div>
+            </td>
+            <td>
+                <div class="col-md-2">Şehir</div>
+            </td>
+            <td>
+                <div class="col-md-2">İlçe</div>
+            </td>
+            <td>
+                <div class="col-md-1">Değiştir</div>
+            </td>
+            <td>
+                <div class="col-md-1">Sil</div>
+            </td>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr id="satir_@item.id">
+            <td>
+                <input id="Ad_Soyad_@item.id" type="text" value="@item.Ad_Soyad" class="form-control" />
+            </td>
+            <td>
+                <input id="Email_@item.id" type="text" value="@item.Email" class="form-control" />
+            </td>
+            <td>
+                <input type="number" id="Dogum_Yili_@item.id" value="@item.Dogum_Yili" class="form-control" min="1930" max=ViewBag.maxYil />
+            </td>
+            <td>
+                <input type="tel" id="telefon_@item.id" pattern="[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}" value="@item.Telefon" class="form-control" />
+            </td>
+            <td>
+                <input type="tel" id="telefon_@item.id"  value="@item.Telefon" class="form-control" />
+            </td>
+            <td>
+                <input type="tel" id="telefon_@item.id"  value="@item.Telefon" class="form-control" />
+            </td>
+
+            <td>
+                <button type="button" class="btn btn-warning" onclick="musteriGuncelle(@item.id)">Değiştir</button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-danger" onclick="musteriSil(@item.id)">Sil</button>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

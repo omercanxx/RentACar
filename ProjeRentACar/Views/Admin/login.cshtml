@@ -1,0 +1,37 @@
+﻿@model ProjeRentACar.Models.Admin
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Admin Giriş</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/stylesxox.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.9.0.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div style="width:100%" align="center">
+
+        @using (Html.BeginForm("login", "Admin", FormMethod.Post))
+        {
+            <div style="width:300px; height:auto; margin-top:120px" class="form-control">
+                <p>Admin Giriş</p>
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "E-mail" })
+                <br />
+                @Html.TextBoxFor(m => m.Sifre, new { @class = "form-control", type = "password", placeholder = "sifre" })
+                <br />
+                <button type="submit" class="btn btn-success"> Giriş </button>
+                <br />
+                <p style="color:red">@ViewBag.uyari</p>
+            </div>
+
+        }
+    </div>
+</body>
+</html>

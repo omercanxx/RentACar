@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="91a4d3dedb0f4e1d81487ab3fc696fba" Name="Diagram1">
+        <EntityTypeShape EntityType="rentACarModel.Admin" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="rentACarModel.Arac" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="rentACarModel.Musteri" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="rentACarModel.sysdiagrams" Width="1.5" PointX="4.75" PointY="4.75" />
+        <EntityTypeShape EntityType="rentACarModel.ilce" Width="1.5" PointX="9.625" PointY="11.625" />
+        <EntityTypeShape EntityType="rentACarModel.Sehir" Width="1.5" PointX="7.375" PointY="2.125" />
+        <AssociationConnector Association="rentACarModel.FK_ilce_Sehir" />
+        <AssociationConnector Association="rentACarModel.FK_Musteri_Sehir" />
+        <AssociationConnector Association="rentACarModel.FK_Musteri_ilce" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

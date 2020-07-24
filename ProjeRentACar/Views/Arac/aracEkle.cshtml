@@ -1,0 +1,50 @@
+﻿@model ProjeRentACar.Models.Arac
+<!--
+Bir form ile file upload (dosya gönderimi) yapmak için formun enctype özelliği multipart/form-data olarak set etmek gerekir. Bu özellik set edildiğinde dosya içeriği form verileriyle birlikte post edilecektir. Form'un action özelliği POST olmalıdır.
+-->
+@using (Html.BeginForm("aracEkle", "Arac", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="row">
+        <div class="col-md-2">
+            @Html.TextBoxFor(m => m.Marka, new { @class = "form-control", placeholder = "Marka" })
+        </div>
+        <div class="col-md-2">
+            @Html.TextBoxFor(m => m.Plaka, new { @class = "form-control", placeholder = "Plaka" })
+        </div>
+        <div class="col-md-1">
+            @Html.TextBoxFor(m => m.Yıl, new { @class = "form-control", placeholder = "Yıl" })
+        </div>
+        <div class="col-md-2">
+            <select name="yakit" class="btn btn-primary" style="width:100%">
+                <option value="Benzin">Benzin</option>
+                <option value="Dizel">Dizel</option>
+                <option value="LPG">LPG</option>
+                <option value="Hibrit">Hibrit</option>
+            </select>
+        </div>
+        <div class="col-md-1">
+            <select name="Vites" class="btn btn-primary" style="width:100%">
+                <option value="Düz">Düz</option>
+                <option value="Otomatik">Otomatik</option>
+            </select>
+        </div>
+
+        <div class="col-md-1">
+            <select name="Durum" class="btn btn-primary" style="width:100%">
+                <option value="Aktif">Aktif</option>
+                <option value="Pasif">Pasif</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <input type="file" name="dosya" id="dosya" />
+        </div>
+        <div class="col-md-1">
+            <button type="submit" class="btn btn-success"> Ekle </button>
+        </div>
+    </div>
+    <div class="row">
+        <p>@ViewBag.uyari</p>
+    </div>
+
+}
+

@@ -1,0 +1,36 @@
+﻿@model ProjeRentACar.Models.Musteri
+<!--
+Bir form ile file upload (dosya gönderimi) yapmak için formun enctype özelliği multipart/form-data olarak set etmek gerekir. Bu özellik set edildiğinde dosya içeriği form verileriyle birlikte post edilecektir. Form'un action özelliği POST olmalıdır.
+-->
+@using (Html.BeginForm("musteriEkle", "Musteri", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="row">
+        <div class="col-md-2">
+            @Html.TextBoxFor(m => m.Ad_Soyad, new { @class = "form-control", placeholder = "Ad Soyad" })
+        </div>
+        <div class="col-md-2">
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
+        </div>
+        <div class="col-md-1">
+            @Html.TextBoxFor(m => m.Dogum_Yili, new { @class = "form-control", placeholder = "Doğum", type="number", min="1930", max=ViewBag.maxYil})
+        </div>
+        <div class="col-md-2">
+            @Html.TextBoxFor(m => m.Telefon, new { @class = "form-control", placeholder = "5xx-xxx-xx-xx", type="tel",pattern = "[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}" })
+        </div>
+        <div class="col-md-2">
+            @Html.DropDownList("sehir", new SelectList(ViewBag.sehir, "sehir_id", "sehir_adi"), new { @class = "form-control", onchange = "ilceSec()" })
+        </div>
+        <div class="col-md-2">
+            @Html.DropDownList("ilce", new SelectList(ViewBag.ilce, "ilce_id", "ilce_adi"), new { @class = "form-control" })
+        </div>
+
+        <div class="col-md-1">
+            <button type="submit" class="btn btn-success"> Ekle </button>
+        </div>
+    </div>
+    <div class="row">
+        <p>@ViewBag.uyari</p>
+    </div>
+
+}
+
